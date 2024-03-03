@@ -1,0 +1,76 @@
+name: Moderation
+version: '${project.version}'
+main: com.arcunis.moderation.Main
+api-version: '1.20'
+load: STARTUP
+depend: [Core]
+authors: [phant0m2290]
+description: Moderation tools for Arcünis
+website: arcunis.com
+
+commands:
+  stats:
+    description: See the stats of a player
+    permission: arcunis.moderation.stats
+  warn:
+    description: Warn a player
+    permission: arcunis.moderation.warn
+  freeze:
+    description: Freeze a player
+    permission: arcunis.moderation.freeze
+  smite:
+    description: Deal damage to a player
+    permission: arcunis.moderation.smite
+  kick:
+    description: Kick a player
+    permission: arcunis.moderation.kick
+  tempban:
+    description: Temporarily ban a player
+    permission: arcunis.moderation.tempban
+  ban:
+    description: Permanently ban a player
+    permission: arcunis.moderation.ban
+  unban:
+    description: Unban a permanently banned player
+    permission: arcunis.moderation.ban
+
+permissions:
+  arcunis.moderation.stats:
+    default: op
+  arcunis.moderation.warn:
+    default: op
+  arcunis.moderation.freeze:
+    default: op
+    children:
+      - arcunis.moderation.exemption.freeze
+  arcunis.moderation.smite:
+    default: op
+    children:
+      - arcunis.moderation.exemption.smite
+  arcunis.moderation.kick:
+    default: op
+    children:
+      - arcunis.moderation.exemption.kick
+  arcunis.moderation.tempban:
+    default: op
+    children:
+      - arcunis.moderation.exemption.ban
+  arcunis.moderation.tempban-ip:
+    default: op
+  arcunis.moderation.ban:
+    default: op
+    children:
+      - arcunis.moderation.exemption.ban
+  arcunis.moderation.ban-ip:
+    default: op
+
+  arcunis.moderation.exemption.warn:
+    default: op
+  arcunis.moderation.exemption.freeze:
+    default: op
+  arcunis.moderation.exemption.smite:
+    default: op
+  arcunis.moderation.exemption.kick:
+    default: op
+  arcunis.moderation.exemption.ban:
+    default: op
