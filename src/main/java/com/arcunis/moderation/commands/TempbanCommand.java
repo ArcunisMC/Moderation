@@ -31,10 +31,10 @@ public class TempbanCommand extends Command {
         if (target == null) {
             sender.sendMessage(Component.text("This player does not exist").color(ChatColor.DARK_RED.color));
             return;
-        } // else if (((Main) plugin).hasExemption(target, "ban", null)) {
-//            sender.sendMessage(Component.text("Unable to ban " + ((TextComponent) target.displayName()).content()).color(ChatColor.DARK_RED.color));
-//            return;
-//        }
+        } else if (((Main) plugin).hasExemption(target, "ban", null)) {
+            sender.sendMessage(Component.text("Unable to ban " + ((TextComponent) target.displayName()).content()).color(ChatColor.DARK_RED.color));
+            return;
+        }
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         String format = args[1].substring(args[1].length() - 1);
